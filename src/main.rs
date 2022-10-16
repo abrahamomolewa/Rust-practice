@@ -8,11 +8,8 @@ fn main() {
 
 
 
-    while let Some(pop) = myStack.pop() {
+    while let Some(pop) = vec.pop() {
         println!("{}", pop);
     }
   
-
-
-
 }
