@@ -19,6 +19,36 @@ struct Complex<T> {
 
 //question 3  Replicate constructor function with name new() returning type Self.
 
+struct Person {
+    name: String,
+    age: u32,
+  }
+  
+  trait Human {
+    fn new(name: String) -> Self;
+    fn info(&self);
+  }
+  
+  impl Human for Person {
+    fn new(name: String) -> Person {
+      Person { 
+    name,
+    age: 22,
+    } 
+  }
+  
+  fn info(&self) {
+    println!("your name is {}, your age is {}", self.name, self.age);
+  }
+  }
+  
+  
+  
+    
+    
+  
+
+
 fn main(){
 
       let mut name1 = String::new(); 
@@ -92,5 +122,9 @@ fn main(){
  //end of question 2 solution.
 
 
+ let text: Person = Human::new("abraham".to_string());
+      
+ text.info();
+//end of question 3 solution.
 }
 
