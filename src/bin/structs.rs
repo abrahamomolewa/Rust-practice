@@ -1,8 +1,8 @@
 
 use std::io;
+use num::complex;
 
-
-//Write a program to store and print the roll no., name , age and marks of a student using structures.
+//question 1: Write a program to store and print the roll no., name , age and marks of a student using structures.
 struct Data {
     roll_no: u32,
     name: String,
@@ -10,8 +10,17 @@ struct Data {
     mark_of_student: u32,
 }
 
+//Question 2: Write a program to add, subtract and multiply two complex numbers using structures to function.
+
+struct Complex<T> {
+    real: T,
+    img:  T,
+}
+
+//question 3  Replicate constructor function with name new() returning type Self.
+
 fn main(){
-     
+
       let mut name1 = String::new(); 
       println!("what is your name?");
       io::stdin().read_line(&mut name1).expect("type your  name");
@@ -42,7 +51,7 @@ fn main(){
             Ok(check) => break check,
             Err(_)  => println!("What's your age:")
           };
-    };
+    }; 
 
 
     let mark_of_student1: u32 = loop {
@@ -65,5 +74,23 @@ fn main(){
         mark_of_student: mark_of_student1,
     };
     println!("Your roll number is {},\nyour name is {}your age is {},\nand the mark of the student is {}", data.roll_no, data.name, data.age, data.mark_of_student );
+//end of question 1 solution.
+
+
+
+    let real = complex::Complex::new(10.0, 20.1);
+      let img =  complex::Complex::new(10.1, 20.1);
+
+    let complex = Complex {
+         real: real,
+         img:  img,
+    };
+
+    let sum = complex.real + complex.img;
+
+    println!("{}", sum); 
+ //end of question 2 solution.
+
+
 }
 
