@@ -1,6 +1,7 @@
 
 use std::io;
 use num::complex;
+use std::cell::Cell;
 
 //question 1: Write a program to store and print the roll no., name , age and marks of a student using structures.
 struct Data {
@@ -16,12 +17,12 @@ struct Complex<T> {
     real: T,
     img:  T,
 }
-
 //question 3  Replicate constructor function with name new() returning type Self.
 
 struct Person {
     name: String,
     age: u32,
+
   }
   
   trait Human {
@@ -42,11 +43,19 @@ struct Person {
   }
   }
   
-  
-  
-    
-    
-  
+
+  //Question 4 Create a generic struct for addition of numbers (they can be integer or float).
+  struct  Addition<T> {
+    num1: T,
+    num2: T
+}
+
+//Question 5 Create an immutable struct with a mutable member.
+#[derive(Debug)]
+struct Persons {
+    name: String,
+     age: Cell<u32>
+}
 
 
 fn main(){
@@ -126,5 +135,33 @@ fn main(){
       
  text.info();
 //end of question 3 solution.
+
+let add = Addition {
+  num1: 4,
+  num2: 5
+};
+
+println!("{}", add.num1 + add.num2);
+
+let add2 = Addition {
+  num1: 5.6,
+  num2: 7.8
+};
+println!("{}", add2.num1 + add2.num2);
+
+// end of question 4 solution.
+
+let person = Persons {
+  name: "Abraham".to_string(),
+  age: Cell::new(43),
+};
+person.age.set(56);
+
+println!("{:?}", person);
+
+// end of question 5 solution 
+
 }
+
+
 

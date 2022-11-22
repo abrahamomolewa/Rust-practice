@@ -8,6 +8,7 @@ autobins = false
 
 [dependencies]
 num = "0.4"
+ num_cpus = "1.14.0"
 
 [[bin]]
 name = "basics"
@@ -24,3 +25,12 @@ path = "src/main.rs"
 [[bin]]
 name = "structs"
 path = "src/bin/structs.rs"
+
+
+[[bin]]
+name = "enums"
+path = "src/bin/enums.rs"
+
+[[bin]]
+name = "concurrency"
+path = "src/bin/concurrency.rs"
