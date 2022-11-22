@@ -8,5 +8,5 @@ macro_rules! add {
 
 fn main() {
 
-    add!(2,3);
+    add!(2,3,5,6,7,7);
 }
