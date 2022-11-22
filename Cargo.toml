@@ -34,3 +34,8 @@ path = "src/bin/enums.rs"
 [[bin]]
 name = "concurrency"
 path = "src/bin/concurrency.rs"
+
+
+[[bin]]
+name = "macros"
+path = "src/bin/macro.rs"
