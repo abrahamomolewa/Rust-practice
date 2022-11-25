@@ -1,4 +1,4 @@
-
+//Question1: Implement a macro named addition to add any amount of numbers. 
 
 macro_rules! add {
     ($($item:expr),*) => {
