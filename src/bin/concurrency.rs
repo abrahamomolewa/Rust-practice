@@ -1,5 +1,7 @@
 use std::thread;
 use std::time::Duration;
+//use std::cell::RefCell;
+use std::sync::{Arc, Mutex};
 
 //Question 1: Find out the number of physical and logical cores in your CPU using rust. hint: try using num_cpus crate.
 fn main()  { 
@@ -40,4 +42,45 @@ for i in 1..2 {
     println!("world! {}", i);
     thread::sleep(Duration::from_millis(1));
 }
+
+
+
+
+
+  
+    //Question 3: bank account where mutltiple costomer try to withdreaw from said bank account
+   pub struct Bank {
+    balance: f32
+   }
+   fn withdraw(the_bank: &Arc<Mutex<Bank>>, amt: f32 ) {
+     let mut bank_ref = the_bank.lock().unwrap();
+     if bank_ref.balance < 5.00 {
+        println!("Current Balance:  {} withdrawal a smaller amount", bank_ref.balance);
+     } else {
+        bank_ref.balance -= amt;
+        println!("customer withdraw {} current Balance {}", amt, bank_ref.balance)
+     }
+   }
+
+   fn customer(the_bank: Arc<Mutex<Bank>>) {
+       withdraw(&the_bank, 5.00);
+   }
+
+   let bank: Arc<Mutex<Bank>> =
+      Arc::new(Mutex::new(Bank { balance: 20.00 }));
+
+   let handles = (0..10).map(|_| {
+    let bank_ref = bank.clone();
+    thread::spawn(||  {
+        customer(bank_ref)
+    })
+});
+
+for handle in handles {
+    handle.join().unwrap();
 }
+println!("Total {}",  bank.lock().unwrap().balance);
+}  
+
+
+ 

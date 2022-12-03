@@ -46,6 +46,33 @@ fn primes(max: u32) -> Vec<u32> {
     primes
 }
 
+//Question 10: Print the following pattern using loops.
+
+
+   /* *
+     ***
+    *****
+   *******
+  ********* */
+  fn print_pattern() {
+    for i in 0..5 {
+        // Print the leading spaces.
+        for _ in 0..(5 - i - 1) {
+            print!(" ");
+        }
+
+        // Print the stars.
+        for _ in 0..(2 * i + 1) {
+            print!("*");
+        }
+
+        // Move to the next line.
+        println!();
+    }
+}
+///
+
+
 fn main() {
 
 //Question 5: create a loop
@@ -147,5 +174,9 @@ for (vec1, vec2) in zipit {
     println!("{}, {}", vec1, vec2)
 }
 //end of question 9
+
+//body of question 10
+print_pattern();
+//end of question 10 body
 
 }    

@@ -58,6 +58,18 @@ struct Persons {
 }
 
 
+//Question 6:  Write a program to compare two dates entered by user. Make a structure named Date to store the elements day, month and year to store the dates. If the dates are equal, display "Dates are equal" otherwise display "Dates are not equal"    
+struct Date {
+  day: u32,
+  month: u32,
+  year: u32
+}
+
+fn compare_dates(date1: Date, date2: Date) -> bool {
+  date1.year == date2.year && date1.month == date2.month && date1.day == date2.day
+}
+//
+
 fn main(){
 
       let mut name1 = String::new(); 
@@ -161,6 +173,38 @@ println!("{:?}", person);
 
 // end of question 5 solution 
 
+
+//Body of question 6:
+
+let mut date1 = Date { day: 0, month: 0, year: 0 };
+let mut date2 = Date { day: 0, month: 0, year: 0 };
+
+// Read the first date from the user.
+println!("Enter the first date (dd mm yyyy):");
+let mut input = String::new();
+io::stdin().read_line(&mut input).expect("Failed to read line");
+let mut input_parts = input.split_whitespace();
+date1.day = input_parts.next().unwrap().parse().expect("Failed to parse day");
+date1.month = input_parts.next().unwrap().parse().expect("Failed to parse month");
+date1.year = input_parts.next().unwrap().parse().expect("Failed to parse year");
+
+// Read the second date from the user.
+println!("Enter the second date (dd mm yyyy):");
+let mut input = String::new();
+io::stdin().read_line(&mut input).expect("Failed to read line");
+let mut input_parts = input.split_whitespace();
+date2.day = input_parts.next().unwrap().parse().expect("Failed to parse day");
+date2.month = input_parts.next().unwrap().parse().expect("Failed to parse month");
+date2.year = input_parts.next().unwrap().parse().expect("Failed to parse year");
+
+// Compare the two dates and print the result.
+if compare_dates(date1, date2) {
+    println!("Dates are equal.");
+} else {
+    println!("Dates are not equal.");
+}
+
+//end of question 6 body 
 }
 
 
